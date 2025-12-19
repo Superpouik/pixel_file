@@ -1,8 +1,9 @@
+
 {
   "name": "Files Pixel Pro",
   "short_name": "Files",
-  "description": "Pixel-perfect file management with SMB/FTP support.",
-  "start_url": "/",
+  "description": "Gestionnaire de fichiers Pixel avec support NAS WebDAV.",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#fef7ff",
   "theme_color": "#fef7ff",
