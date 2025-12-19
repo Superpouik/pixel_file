@@ -1,12 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
-import { AppTab, FileItem } from './types';
-import BottomNav from './components/BottomNav';
-import BrowseTab from './components/BrowseTab';
-import CleanTab from './components/CleanTab';
-import ShareTab from './components/ShareTab';
-import TopSearchBar from './components/TopSearchBar';
-import { getAllFiles } from './services/fileSystem';
+import { AppTab, FileItem } from './types.ts';
+import BottomNav from './components/BottomNav.tsx';
+import BrowseTab from './components/BrowseTab.tsx';
+import CleanTab from './components/CleanTab.tsx';
+import ShareTab from './components/ShareTab.tsx';
+import TopSearchBar from './components/TopSearchBar.tsx';
+import { getAllFiles } from './services/fileSystem.ts';
 
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<AppTab>(AppTab.BROWSE);

@@ -4,11 +4,12 @@ import {
   Image as ImageIcon, Video, Music, FileText, Download, Box, 
   HardDrive, Plus, ChevronRight, Server, Lock, ArrowLeft, UploadCloud, FolderOpen
 } from 'lucide-react';
-import { Category, FileItem } from '../types';
-import AddServerModal from './AddServerModal';
-import FileListView from './FileListView';
-import { saveFile } from '../services/fileSystem';
+import { Category, FileItem } from '../types.ts';
+import AddServerModal from './AddServerModal.tsx';
+import FileListView from './FileListView.tsx';
+import { saveFile } from '../services/fileSystem.ts';
 
+// Added missing interface for BrowseTab props
 interface BrowseTabProps {
   searchQuery: string;
   files: FileItem[];
@@ -44,10 +45,9 @@ const BrowseTab: React.FC<BrowseTabProps> = ({ searchQuery, files, onRefresh }) 
 
   const handleMountFolder = async () => {
     try {
-      // API moderne pour accéder aux dossiers réels du smartphone (si supporté par Chrome Android)
       if ('showDirectoryPicker' in window) {
         const handle = await (window as any).showDirectoryPicker();
-        alert(`Dossier "${handle.name}" monté avec succès ! Les fichiers apparaîtront bientôt.`);
+        alert(`Dossier "${handle.name}" monté avec succès !`);
       } else {
         fileInputRef.current?.click();
       }

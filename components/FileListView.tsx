@@ -1,9 +1,10 @@
 
 import React, { useState } from 'react';
 import { MoreVertical, Image as ImageIcon, Video, Music, FileText, Download, Box, Trash2, X, Maximize2 } from 'lucide-react';
-import { FileItem } from '../types';
-import { deleteFile } from '../services/fileSystem';
+import { FileItem } from '../types.ts';
+import { deleteFile } from '../services/fileSystem.ts';
 
+// Added missing interface for FileListView props
 interface FileListViewProps {
   categoryId: string;
   searchQuery: string;
@@ -46,7 +47,6 @@ const FileListView: React.FC<FileListViewProps> = ({ categoryId, searchQuery, fi
   };
 
   const handleOpenFile = (file: any) => {
-    // Dans IndexedDB, on a un objet Blob. On crée une URL temporaire.
     if (file.blob) {
       const url = URL.createObjectURL(file.blob);
       setPreviewFile({ ...file, url });
@@ -81,7 +81,6 @@ const FileListView: React.FC<FileListViewProps> = ({ categoryId, searchQuery, fi
         </div>
       ))}
 
-      {/* Modal de prévisualisation */}
       {previewFile && (
         <div className="fixed inset-0 z-[100] bg-black/95 flex flex-col animate-fade-in">
           <div className="flex justify-between items-center p-4">
@@ -104,14 +103,8 @@ const FileListView: React.FC<FileListViewProps> = ({ categoryId, searchQuery, fi
             ) : (
               <div className="text-center text-white space-y-4">
                 <FileText className="w-20 h-20 mx-auto opacity-50" />
-                <p>Aperçu non disponible pour ce type de fichier.</p>
-                <a 
-                  href={previewFile.url} 
-                  download={previewFile.name}
-                  className="inline-block bg-blue-600 px-6 py-2 rounded-full font-bold"
-                >
-                  Télécharger
-                </a>
+                <p>Aperçu non disponible.</p>
+                <a href={previewFile.url} download={previewFile.name} className="inline-block bg-blue-600 px-6 py-2 rounded-full font-bold">Télécharger</a>
               </div>
             )}
           </div>
@@ -122,7 +115,6 @@ const FileListView: React.FC<FileListViewProps> = ({ categoryId, searchQuery, fi
         <div className="text-center py-20 text-gray-400">
           <Download className="w-16 h-16 mx-auto mb-4 opacity-20" />
           <p>Dossier vide</p>
-          <p className="text-xs">Importez des fichiers pour les voir ici</p>
         </div>
       )}
     </div>

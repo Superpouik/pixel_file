@@ -1,12 +1,12 @@
 
-import { FileItem, FileType } from '../types';
+import { FileItem, FileType } from '../types.ts';
 
 const DB_NAME = 'FilesPixelProDB';
 const STORE_NAME = 'files';
 
 export const initDB = (): Promise<IDBDatabase> => {
   return new Promise((resolve, reject) => {
-    const request = indexedDB.open(DB_NAME, 2); // Version bump for blob storage
+    const request = indexedDB.open(DB_NAME, 2);
     request.onupgradeneeded = () => {
       const db = request.result;
       if (db.objectStoreNames.contains(STORE_NAME)) {
@@ -36,7 +36,7 @@ export const saveFile = async (file: File, category: string): Promise<FileItem> 
     size: (file.size / 1024 / 1024).toFixed(2) + ' MB',
     modified: new Date().toLocaleDateString(),
     path: `/${category}/${file.name}`,
-    blob: file // Stockage du fichier réel dans IndexedDB
+    blob: file
   };
 
   return new Promise((resolve, reject) => {
