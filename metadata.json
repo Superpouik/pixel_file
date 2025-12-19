@@ -1,0 +1,26 @@
+{
+  "name": "Files Pixel Pro",
+  "short_name": "Files",
+  "description": "Pixel-perfect file management with SMB/FTP support.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fef7ff",
+  "theme_color": "#fef7ff",
+  "icons": [
+    {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/6/66/Google_Files_logo.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/6/66/Google_Files_logo.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
